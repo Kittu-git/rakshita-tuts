@@ -1,0 +1,36 @@
+1 Create a Virtual Machine (VM):
+* In the Google Cloud Console, go to the Compute Engine section.
+* Create a new VM instance with the desired specifications.
+
+
+2 Configure Firewall Rules:
+* Ensure that your VM has the necessary firewall rules to allow traffic on ports 8080 (Jenkins) and 22 (SSH).
+
+
+3 Connect to the VM:
+* Use SSH to connect to your VM.
+
+
+4 Install Jenkins:
+
+* Update the package list: " sudo apt-get update "
+* Install Java: " sudo apt-get install openjdk-8-jdk "
+* Add Jenkins repository and key:
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+* Install Jenkins: sudo apt-get update && sudo apt-get install jenkins
+
+
+5 Start Jenkins Service:
+* Start the Jenkins service: sudo systemctl start jenkins
+* Enable Jenkins to start on boot: sudo systemctl enable jenkins
+
+
+6 Access Jenkins:
+* Open a web browser and navigate to http://YOUR_VM_IP:8080.
+* Retrieve the Jenkins unlock key from the server by running sudo cat /var/lib/jenkins/secrets/initialAdminPassword and follow the on-screen instructions.
+
+
+Remember to secure your Jenkins installation by configuring authentication, setting up SSL, and following best practices for securing a Jenkins server. Adjust these instructions based on your specific needs and the Linux distribution you're using on your VM.
+
